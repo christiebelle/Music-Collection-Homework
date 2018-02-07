@@ -9,7 +9,7 @@ class Album
   def initialize( options )
     @title = options['title']
     @genre = options['genre']
-    @id = options['id'].to_i if ['id']
+    @id = options['id'].to_i if options['id']
     @artist_id = options['artist_id'].to_i
   end
 
@@ -37,6 +37,21 @@ class Album
     discography = SQLRunner.run(sql, values)
     result = discography.map{ |music| Artist.new(music)}
     return result
+  end
+
+  def update()
+    sql = "UPDATE albums SET (title, genre, artist_id) =
+    ($1,$2, $3) WHERE id = $4"
+    values = [@title, @genre, @artist_id, @id]
+    SQLRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    search_results = SQLRunner.run(sql, values)[0]
+    results = Album.new(search_results)
+    return results
   end
 
 end

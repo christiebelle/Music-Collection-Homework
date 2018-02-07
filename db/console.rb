@@ -6,7 +6,7 @@ require_relative('../models/album')
 Album.delete_all
 Artist.delete_all
 
-artist1 = Artist.new({ 'name' => 'Take That'})
+artist1 = Artist.new({ 'name' => 'Take That and Party'})
 artist1.save
 
 artist2 = Artist.new({ 'name' => 'Backstreet Boys'})
@@ -61,6 +61,12 @@ album3.save()
 album4.save()
 album5.save()
 album6.save()
+
+artist1.name = 'Take That'
+artist1.update
+
+album5.title = 'In A World Like This: Deluxe World Tour Edition'
+album5.update
 
 binding.pry
 nil

@@ -3,7 +3,7 @@ require_relative('../db/sqlrunner')
 
 class Artist
 
-  attr_reader :id, :name
+  attr_accessor :id, :name
 
   def initialize( options )
     @id = options['id'].to_i
@@ -36,4 +36,22 @@ class Artist
     return result
   end
 
-end
+  def update()
+    sql = "UPDATE artists SET name = $1 WHERE id = $2"
+    values = [@name, @id]
+    SQLRunner.run(sql, values)
+  end
+
+    def self.find(id)
+      db = PG.connect({ dbname: 'pizza_shop', host: 'localhost' })
+      sql = "SELECT * FROM pizza_orders WHERE id = #{id}"
+      values = [id]
+      db.prepare("find", sql)
+      results = db.exec_prepared("find", values)
+      db.close()
+      order_hash = results.first
+      order = PizzaOrder.new(order_hash)
+      return order
+    end
+
+  end
