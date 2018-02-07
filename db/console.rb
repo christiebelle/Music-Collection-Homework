@@ -37,7 +37,7 @@ album3 = Album.new({
 
 album1.save()
 album2.save()
+album3.save()
 
 binding.pry
-
-album3.save()
+nil
