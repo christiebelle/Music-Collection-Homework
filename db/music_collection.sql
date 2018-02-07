@@ -16,9 +16,6 @@ artist_id INT REFERENCES artists(id)
 --
 -- Music Collection
 --
--- You have been asked to create an app that will allow a
--- music collector to manage their collection of CDs/records.
---
 -- List All Artists/Albums
 --
 -- List all the albums they have by an artist

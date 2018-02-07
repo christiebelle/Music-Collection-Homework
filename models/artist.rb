@@ -21,4 +21,5 @@ class Artist
     sql = "DELETE FROM artists"
     SQLRunner.run(sql)
   end
+
 end

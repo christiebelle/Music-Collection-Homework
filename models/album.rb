@@ -25,4 +25,10 @@ class Album
     SQLRunner.run(sql)
   end
 
+  def self.all
+  sql = "SELECT * FROM albums"
+  music = SQLRunner.run(sql)
+  return music.map{ |album| Album.new(album)}
+end
+
 end

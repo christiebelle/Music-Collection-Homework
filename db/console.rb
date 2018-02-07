@@ -3,10 +3,8 @@ require_relative('sqlrunner')
 require_relative('../models/artist')
 require_relative('../models/album')
 
-
-Artist.delete_all
 Album.delete_all
-
+Artist.delete_all
 
 artist1 = Artist.new({ 'name' => 'Take That'})
 artist1.save
@@ -16,6 +14,7 @@ artist2.save
 
 artist3 = Artist.new({ 'name' => 'East 17'})
 artist3.save
+
 
 
 album1 = Album.new({
@@ -38,4 +37,7 @@ album3 = Album.new({
 
 album1.save()
 album2.save()
+
+binding.pry
+
 album3.save()
