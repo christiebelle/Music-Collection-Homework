@@ -10,7 +10,7 @@ CREATE TABLE albums (
 id SERIAL4 PRIMARY KEY,
 title VARCHAR(255),
 genre VARCHAR(255),
-arist_id INT REFERENCES artists(id)
+artist_id INT REFERENCES artists(id)
 );
 
 --
